@@ -28,11 +28,12 @@
 
 #include "config.h"
 #include <stdlib.h>
+#include <string.h>
 #include <pthread.h>
+#include <string.h>
 
-#include "vcl.h"
 #include "cache/cache.h"
-#include "vrt.h"
+#include "vcl.h"
 
 #include "vcc_header_if.h"
 
@@ -204,7 +205,7 @@ event_function(VRT_CTX, struct vmod_priv *priv, enum vcl_event_e e)
 	return (0);
 }
 
-VCL_VOID __match_proto__()
+VCL_VOID v_matchproto_()
 vmod_append(VRT_CTX, VCL_HEADER hdr, const char *fmt, ...)
 {
 	va_list ap;
@@ -226,7 +227,7 @@ vmod_append(VRT_CTX, VCL_HEADER hdr, const char *fmt, ...)
 	va_end(ap);
 }
 
-VCL_STRING __match_proto__()
+VCL_STRING v_matchproto_()
 vmod_get(VRT_CTX, struct vmod_priv *priv, VCL_HEADER hdr, VCL_STRING s)
 {
 	struct http *hp;
@@ -246,7 +247,7 @@ vmod_get(VRT_CTX, struct vmod_priv *priv, VCL_HEADER hdr, VCL_STRING s)
 	return (p);
 }
 
-VCL_VOID  __match_proto__()
+VCL_VOID  v_matchproto_()
 vmod_copy(VRT_CTX, VCL_HEADER src, VCL_HEADER dst)
 {
 	struct http *src_hp;
@@ -257,7 +258,7 @@ vmod_copy(VRT_CTX, VCL_HEADER src, VCL_HEADER dst)
 	header_http_cphdr(ctx, src_hp, src->what, dst);
 }
 
-VCL_VOID  __match_proto__()
+VCL_VOID  v_matchproto_()
 vmod_remove(VRT_CTX, struct vmod_priv *priv, VCL_HEADER hdr, VCL_STRING s)
 {
 	struct http *hp;
